@@ -35,7 +35,14 @@
 
 <input type="datetime-local" id="fechahora" class="form-control col-6" /><br />
 <textarea id="tarea" class="form-control col-6"></textarea>
-<textarea id="tarea2" class="form-control col-6"></textarea>
+<textarea id="tarea2" class="form-control col-6"></textarea><br /><br />
+
+<div class="form-inline">
+    <input type="number" id="item1" class="form-control col-sm-3" />
+    <input type="number" id="item2" class="form-control col-sm-3" />
+    <input type="number" id="result" class="form-control col-sm-3" disabled/><br />
+
+</div>
 
 @section scripts
 { 
@@ -58,6 +65,11 @@
             cadena = $("#tarea").val();
             alert(cadena);
             $("#tarea2").text(cadena.replace(/(<([^>]+)>)/ig, ''));
+        });
+
+        $("#item2").blur(function () {
+            var result = parseInt($("#item1").val()) + parseInt($(this).val());
+            $("#result").attr("value", result);
         });
         
     </script>
