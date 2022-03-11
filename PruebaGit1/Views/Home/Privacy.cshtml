@@ -4,3 +4,63 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>
+
+
+<!-- Modal History Log Exchange Rate-->
+<div class="modal fade" id="history-exchange-rate-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class=" modal-dialog " role="document" style="width: 65%; height: 95%;">
+        <div class="modal-content" style="width: 95%; height: 100%;">
+            <div class="modal-header" style="width: 100%; height: 8%;">
+                <h5 class="modal-title" style="width:50%">History Log Exchange Rate</h5>
+                <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close" style=" margin-top: -14px; margin-right: 8px; opacity: 1 !important; color: red !important;">
+                    <span aria-hidden="true">X</span>
+                </button>
+                <button class="btn btn-primary collapse-off-all pull-right" style="margin-top: -17px; margin-right: 33px;" role="button">
+                    Hide Details
+                </button>
+
+            </div>
+            <div id="history-exchange-rate-body" style="width: 90%; height: 84%; overflow:auto; margin-left: 48px;">
+
+            </div>
+            <div class="modal-footer" style="width: 100%; height: 8%;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div><br />
+<button id="mostrar" class="btn btn-success">Mostrar Modal</button>
+<button id="mostrar2" class="btn btn-success">Mostrar Cadena y establecer fecha y hora</button>
+<button id="mostrar3" class="btn btn-success">Mostrar Cadena sin las etiquetas</button><br /><br />
+
+<input type="datetime-local" id="fechahora" class="form-control col-6" /><br />
+<textarea id="tarea" class="form-control col-6"></textarea>
+<textarea id="tarea2" class="form-control col-6"></textarea>
+
+@section scripts
+{ 
+    <script>
+        var cadena;
+        $("#mostrar").click(function () {
+            $("#history-exchange-rate-modal").modal();
+        });
+
+        $("#mostrar2").click(function () {
+            cadena = $("#tarea").val();
+            alert(new Date());
+            $("#fechahora").attr("value", "03/09/2022 08:50 PM");
+            $("#tarea2").text(cadena);
+        });
+
+        $("#mostrar3").click(function () {
+            //Para eliminar etiquetas html de un cadena de caracteres se usa el metodo:
+            //str.replace( /(<([^>]+)>)/ig, '');
+            cadena = $("#tarea").val();
+            alert(cadena);
+            $("#tarea2").text(cadena.replace(/(<([^>]+)>)/ig, ''));
+        });
+        
+    </script>
+
+}
+
